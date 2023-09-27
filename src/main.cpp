@@ -1,9 +1,4 @@
 /**
- * @file      UnitTest.ino
- * @author    Lewis He (lewishe@outlook.com)
- * @license   MIT
- * @copyright Copyright (c) 2023  Shenzhen Xin Yuan Electronic Technology Co., Ltd
- * @date      2023-04-11
  * @note      Arduino Setting
  *            Tools ->
  *                  Board:"ESP32S3 Dev Module"
@@ -15,6 +10,8 @@
  *                  PSRAM:"OPI PSRAM"
  *                  Upload Mode:"UART0/Hardware CDC"
  *                  USB Mode:"Hardware CDC and JTAG"
+ * 
+ *     FOR KEYBOARD BACKLIGHT PRESS ALT+B !!!!!!!!!!!!!!!!
  */
 #include <Arduino.h>
 #include <SPI.h>
