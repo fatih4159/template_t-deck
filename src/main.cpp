@@ -91,6 +91,7 @@ lv_group_t  *kb_indev_group;
 lv_obj_t    *hw_ta;
 lv_obj_t    *radio_ta;
 lv_obj_t    *tv ;
+//lv_obj_t    *tiv
 SemaphoreHandle_t xSemaphore = NULL;
 
 
@@ -337,7 +338,7 @@ void loopRadio()
         digitalWrite(BOARD_TFT_CS, HIGH);
 
         char buf[256];
-        if (lv_tabview_get_tab_act(tv) != 1) {
+        if (lv_tileview_get_tile_act(tv) ) {
             xSemaphoreGive( xSemaphore );
             return ;
         }
@@ -497,12 +498,14 @@ void factory_ui(lv_obj_t *parent)
     lv_style_set_bg_img_src(&bg_style, &image);
     lv_style_set_bg_opa(&bg_style, LV_OPA_100);
 
-    tv = lv_tabview_create(parent, LV_DIR_TOP, 50);
+    //tv = lv_tabview_create(parent, LV_DIR_TOP, 50);
+    //lv_obj_add_style(tv, &bg_style, LV_PART_MAIN);
+    tv = lv_tileview_create(parent);
     lv_obj_add_style(tv, &bg_style, LV_PART_MAIN);
 
-    lv_obj_t *t1 = lv_tabview_add_tab(tv, "Hardware");
-    lv_obj_t *t2 = lv_tabview_add_tab(tv, "Radio");
-    lv_obj_t *t3 = lv_tabview_add_tab(tv, "Keyboard");
+    lv_obj_t *t1 = lv_tileview_add_tile(tv, 0, 0, LV_DIR_BOTTOM);
+    lv_obj_t *t2 = lv_tileview_add_tile(tv, 1, 0, LV_DIR_BOTTOM);
+    lv_obj_t *t3 = lv_tileview_add_tile(tv, 1, 1, LV_DIR_BOTTOM);
 
 
     static lv_style_t ta_bg_style;
@@ -652,84 +655,9 @@ void initBoard()
     ret = Wire.endTransmission() == 0;
     touchDected = ret;
 
-    kbDected = checkKb();
-    digitalWrite(keyborad_BL_PIN, true);
-    
+    kbDected = checkKb();    
 
     setupLvgl();
-
-    // Adapt to two screens, the difference between them is that the colors are reversed, you can annotate them after confirming the screen
-    // Adapt to two screens, the difference between them is that the colors are reversed, you can annotate them after confirming the screen
-    // Adapt to two screens, the difference between them is that the colors are reversed, you can annotate them after confirming the screen
-    // Adapt to two screens, the difference between them is that the colors are reversed, you can annotate them after confirming the screen
-    lv_obj_t *cont = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(cont, lv_disp_get_hor_res(NULL), lv_disp_get_ver_res(NULL));
-    lv_obj_set_scroll_dir(cont, LV_DIR_VER);
-
-    lv_obj_t *label;
-    label = lv_label_create(cont);
-    lv_label_set_long_mode(label, LV_LABEL_LONG_SCROLL);
-    lv_obj_set_width(label, 320);
-    lv_label_set_text(label, "The button is blue, if the button is not blue, please press \"Invert OFF\" or \"Invert ON\" Button");
-    lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, 10);
-
-    static uint8_t invertFlag[3] = {0, 1, 2};
-    lv_obj_t *btn = lv_btn_create(cont);
-    lv_obj_set_size(btn, LV_PCT(50), LV_PCT(40));
-    lv_obj_t *btn_label = lv_label_create(btn);
-    lv_label_set_text(btn_label, "Invert ON");
-    lv_obj_center(btn_label);
-    lv_obj_add_event_cb(btn, disp_inver_event, LV_EVENT_ALL, &invertFlag[0]);
-    lv_obj_align_to(btn, label, LV_ALIGN_OUT_BOTTOM_LEFT, 5, 10);
-
-    btn = lv_btn_create(cont);
-    lv_obj_set_size(btn, LV_PCT(50), LV_PCT(40));
-    btn_label = lv_label_create(btn);
-    lv_label_set_text(btn_label, "Invert OFF");
-    lv_obj_center(btn_label);
-    lv_obj_add_event_cb(btn, disp_inver_event, LV_EVENT_ALL, &invertFlag[1]);
-    lv_obj_align_to(btn, label, LV_ALIGN_OUT_BOTTOM_RIGHT, -20, 10);
-
-
-    btn = lv_btn_create(cont);
-    lv_obj_set_size(btn, LV_PCT(50), LV_PCT(20));
-    btn_label = lv_label_create(btn);
-    lv_label_set_text(btn_label, "OK");
-    lv_obj_center(btn_label);
-    lv_obj_add_event_cb(btn, disp_inver_event, LV_EVENT_ALL, &invertFlag[2]);
-    lv_obj_align_to(btn, label, LV_ALIGN_OUT_BOTTOM_MID, -10, LV_PCT(40));
-
-    clicked = false;
-    while (!clicked) {
-        lv_task_handler(); delay(5);
-    }
-
-    lv_obj_del(cont);
-
-    // test image
-    const lv_img_dsc_t *img_src[4] = {&image1, &image2, &image3, &image4};
-    lv_obj_t *img = lv_img_create(lv_scr_act());
-    label = lv_label_create(lv_scr_act());
-    lv_label_set_long_mode(label, LV_LABEL_LONG_SCROLL);
-    lv_obj_set_width(label, 320);
-    lv_label_set_text(label, "Press the key of the trackball in the middle of the board to enter the next picture");
-    lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, 0);
-
-    clicked = false;
-    int i = 3;
-    while (i > 0) {
-        lv_img_set_src(img, (void *)(img_src[i]));
-        while (!clicked) {
-            lv_task_handler(); delay(5);
-            button.check();
-        }
-        i--;
-        clicked = false;
-    }
-
-    lv_obj_del(label);
-    lv_obj_del(img);
-
 
     factory_ui(lv_scr_act());
 
