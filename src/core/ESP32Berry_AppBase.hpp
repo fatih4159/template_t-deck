@@ -1,19 +1,13 @@
-/////////////////////////////////////////////////////////////////
-/*
-  New ESP32Berry Project, The base UI & ChatGPT Client
-  For More Information: https://youtu.be/5K6rSw9j5iY
-  Created by Eric N. (ThatProject)
-*/
-/////////////////////////////////////////////////////////////////
+
 #pragma once
 #define LV_CONF_INCLUDE_SIMPLE 1
 #include "config/lv_conf.h"
 #include <lvgl.h>
 #include <vector>
-#include "ESP32Berry_Config.hpp"
-#include "ESP32Berry_Display.hpp"
-#include "ESP32Berry_Network.hpp"
-#include "ESP32Berry_System.hpp"
+#include "../config/ESP32Berry_Config.hpp"
+#include "../ui/ESP32Berry_Display.hpp"
+#include "../network/ESP32Berry_Network.hpp"
+#include "../system/ESP32Berry_System.hpp"
 
 class AppBase {
 private:

@@ -1,13 +1,7 @@
-/////////////////////////////////////////////////////////////////
-/*
-  New ESP32Berry Project, The base UI & ChatGPT Client
-  For More Information: https://youtu.be/5K6rSw9j5iY
-  Created by Eric N. (ThatProject)
-*/
-/////////////////////////////////////////////////////////////////
+
 #define LV_CONF_INCLUDE_SIMPLE 1
-#include "config/lv_conf.h"
-#include "lvgl.h"
+#include "../../config/lv_conf.h"
+#include <lvgl.h>
 
 #ifndef LV_ATTRIBUTE_MEM_ALIGN
 #define LV_ATTRIBUTE_MEM_ALIGN

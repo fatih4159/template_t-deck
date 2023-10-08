@@ -1,14 +1,8 @@
-/////////////////////////////////////////////////////////////////
-/*
-  New ESP32Berry Project, The base UI & ChatGPT Client
-  For More Information: https://youtu.be/5K6rSw9j5iY
-  Created by Eric N. (ThatProject)
-*/
-/////////////////////////////////////////////////////////////////
+
 #pragma once
 #include <vector>
 #include <WiFiClientSecure.h>
-#include "ESP32Berry_Config.hpp"
+#include "../config/ESP32Berry_Config.hpp"
 typedef enum {
   NETWORK_DISCONNECTED,
   NETWORK_SCANNING_OFF,

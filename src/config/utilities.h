@@ -1,11 +1,4 @@
-/**
- * @file      utilities.h
- * @author    Lewis He (lewishe@outlook.com)
- * @license   MIT
- * @copyright Copyright (c) 2023  Shenzhen Xin Yuan Electronic Technology Co., Ltd
- * @date      2023-04-11
- *
- */
+
 #pragma once
 
 //! The board peripheral power control pin needs to be set to HIGH when using the peripheral

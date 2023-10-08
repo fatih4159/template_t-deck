@@ -1,13 +1,7 @@
-/////////////////////////////////////////////////////////////////
-/*
-  New ESP32Berry Project, The base UI & ChatGPT Client
-  For More Information: https://youtu.be/5K6rSw9j5iY
-  Created by Eric N. (ThatProject)
-*/
-/////////////////////////////////////////////////////////////////
+
 #pragma once
-#include "ESP32Berry_Config.hpp"
-#include "ESP32Berry_AppBase.hpp"
+#include "../config/ESP32Berry_Config.hpp"
+#include "../core/ESP32Berry_AppBase.hpp"
 #include <ArduinoJson.h>
 #include <ChatGPT.hpp>
 

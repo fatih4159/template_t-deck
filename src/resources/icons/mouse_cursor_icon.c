@@ -1,5 +1,5 @@
 #define LV_CONF_INCLUDE_SIMPLE 1
-#include "config/lv_conf.h"
+#include "../../config/lv_conf.h"
 #include "lvgl.h"
 
 const uint8_t mouse_cursor_icon_map[] = {

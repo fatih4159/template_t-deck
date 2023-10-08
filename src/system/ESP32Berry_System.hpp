@@ -1,13 +1,7 @@
-/////////////////////////////////////////////////////////////////
-/*
-  New ESP32Berry Project, The base UI & ChatGPT Client
-  For More Information: https://youtu.be/5K6rSw9j5iY
-  Created by Eric N. (ThatProject)
-*/
-/////////////////////////////////////////////////////////////////
+
 #pragma once
 #include <vector>
-#include "ESP32Berry_Config.hpp"
+#include "../config/ESP32Berry_Config.hpp"
 #include <Audio.h>
 #include "esp32-hal.h"
 #include "lwip/apps/sntp.h"
