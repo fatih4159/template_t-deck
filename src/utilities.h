@@ -8,8 +8,6 @@
  */
 #pragma once
 
-
-
 //! The board peripheral power control pin needs to be set to HIGH when using the peripheral
 #define BOARD_POWERON       10
 
@@ -40,7 +38,6 @@
 #define BOARD_TBOX_G01      3
 #define BOARD_TBOX_G04      1
 #define BOARD_TBOX_G03      15
-
 
 #define BOARD_ES7210_MCLK   48
 #define BOARD_ES7210_LRCK   21
