@@ -1,7 +1,7 @@
 
 #pragma once
-#include "../config/ESP32Berry_Config.hpp"
-#include "../core/ESP32Berry_AppBase.hpp"
+#include "../../config/ESP32Berry_Config.hpp"
+#include "../../core/ESP32Berry_AppBase.hpp"
 #include <ArduinoJson.h>
 #include <ChatGPT.hpp>
 

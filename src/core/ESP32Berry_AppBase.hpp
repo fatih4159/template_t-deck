@@ -1,7 +1,6 @@
 
 #pragma once
-#define LV_CONF_INCLUDE_SIMPLE 1
-#include "config/lv_conf.h"
+
 #include <lvgl.h>
 #include <vector>
 #include "../config/ESP32Berry_Config.hpp"
